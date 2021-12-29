@@ -1,0 +1,473 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="ServoBiped">
+
+  <link name="torso">
+    <visual>
+      <geometry>
+      	<box size="0.11 0.045 0.06"/> 
+      </geometry>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    </visual>
+	<collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+      		<geometry>
+      	<box size="0.11 0.045 0.06"/> 
+      		</geometry>
+	</collision>
+	<inertial>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+          <mass value="0.35" />
+          <inertia ixx="${0.35*(0.045*0.045+0.06*0.06)/12}" ixy="0" ixz="0" 
+            iyy="${0.35*(0.11*0.11+0.06*0.06)/12}" iyz="0" 
+            izz="${0.35*(0.11*0.11+0.045*0.045)/12}"/>
+    </inertial>
+  </link>
+
+
+  <link name="l_hip">
+    <visual>
+      <origin xyz="0.01 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.03 0.086"/>
+      </geometry>
+    </visual>
+    <inertial>
+         <origin xyz="0.01 0 -0.03" rpy="0 0 0"/>
+         <mass value="0.03" />
+         <inertia ixx="${0.03*(0.03*0.03+0.086*0.086)/12}" 
+          iyy="${0.03*(0.045*0.045+0.086*0.086)/12}" 
+          izz="${0.03*(0.045*0.045+0.03*0.03)/12}" ixy="0" iyz="0" ixz="0" />
+    </inertial>
+  </link>
+
+  <link name="r_hip">
+    <visual>
+      <origin xyz="-0.01 0 -0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.03 0.086"/>
+      </geometry>
+    </visual>
+    <inertial>
+          <origin xyz="-0.01 0 -0.03" rpy="0 0 0"/>
+          <mass value="0.03" />
+         <inertia ixx="${0.03*(0.03*0.03+0.086*0.086)/12}" 
+          iyy="${0.03*(0.045*0.045+0.086*0.086)/12}" 
+          izz="${0.03*(0.045*0.045+0.03*0.03)/12}" ixy="0" iyz="0" ixz="0" />
+    </inertial>
+  </link>
+
+  <link name="left_thigh">
+    <visual>
+      <origin xyz="0.0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.025 0.1"/>
+      </geometry>
+    </visual>
+        <inertial>
+          <origin xyz="0.0 0 -0.05" rpy="0 0 0"/>
+          <mass value="0.16" />
+         <inertia ixx="${0.16*(0.025*0.025+0.01)/12}" iyy="${0.16*(0.045*0.045+0.01)/12}" izz="${0.16*(0.045*0.045+0.025*0.025)/12}" ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+ <link name="right_thigh">
+    <visual>
+      <origin xyz="0.0 0 -0.05" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.025 0.1"/>
+      </geometry>
+    </visual>
+        <inertial>
+          <origin xyz="0.0 0 -0.05" rpy="0 0 0"/>
+          <mass value="0.16" />
+         <inertia ixx="${0.16*(0.025*0.025+0.01)/12}" iyy="${0.16*(0.045*0.045+0.01)/12}" izz="${0.16*(0.045*0.045+0.025*0.025)/12}" ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+  <link name="left_shank">
+    <visual>
+      <origin xyz="0.0 0 -0.0425" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.025 0.101"/>
+      </geometry>
+    </visual>
+<inertial>
+  <origin xyz="0.0 0 -0.0425" rpy="0 0 0"/>
+          <mass value="0.04" />
+          <inertia ixx="${0.04*(0.025*0.025+0.01)/12}" iyy="${0.04*(0.045*0.045+0.01)/12}" izz="${0.04*(0.045*0.045+0.025*0.025)/12}" ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+  <link name="right_shank">
+    <visual>
+      <origin xyz="0.0 0 -0.0425" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.025 0.101"/>
+      </geometry>
+    </visual>
+<inertial>
+  <origin xyz="0.0 0 -0.0425" rpy="0 0 0"/>
+          <mass value="0.04" />
+          <inertia ixx="${0.04*(0.025*0.025+0.01)/12}" iyy="${0.04*(0.045*0.045+0.01)/12}" izz="${0.04*(0.045*0.045+0.025*0.025)/12}" ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+  <link name="left_ankle">
+    <visual>
+      <origin xyz="0.0 0 -0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.04 0.066"/>
+      </geometry>
+    </visual>
+          <inertial>
+            <origin xyz="0.0 0 -0.025" rpy="0 0 0"/>
+         <mass value="0.1" />
+          <inertia ixx="${0.1*(0.04*0.04+0.066*0.066)/12}" iyy="${0.1*(0.045*0.045+0.066*0.066)/12}" izz="${0.1*(0.045*0.045+0.04*0.04)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+<link name="right_ankle">
+    <visual>
+      <origin xyz="0.0 0 -0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.04 0.066"/>
+      </geometry>
+    </visual>
+          <inertial>
+            <origin xyz="0.0 0 -0.025" rpy="0 0 0"/>
+         <mass value="0.1" />
+          <inertia ixx="${0.1*(0.04*0.04+0.066*0.066)/12}" iyy="${0.1*(0.045*0.045+0.066*0.066)/12}" izz="${0.1*(0.045*0.045+0.04*0.04)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+
+  <link name="left_footjoint">
+    <visual>
+      <origin xyz="0.01 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.045 0.02"/>
+      </geometry>
+    </visual>
+<inertial>
+  <origin xyz="0.01 0 -0.0" rpy="0 0 0"/>
+         <mass value="0.08" />
+          <inertia ixx="${0.08*(0.045*0.045+0.02*0.02)/12}" iyy="${0.08*(0.045*0.045+0.02*0.02)/12}" izz="${0.08*(0.045*0.045+0.045*0.045)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+<link name="right_footjoint">
+    <visual>
+      <origin xyz="-0.01 0 0.0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.045 0.045 0.02"/>
+      </geometry>
+    </visual>
+<inertial>
+  <origin xyz="-0.01 0 -0.0" rpy="0 0 0"/>
+         <mass value="0.08" />
+          <inertia ixx="${0.08*(0.045*0.045+0.02*0.02)/12}" iyy="${0.08*(0.045*0.045+0.02*0.02)/12}" izz="${0.08*(0.045*0.045+0.045*0.045)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+
+  <link name="left_footpad">
+    <visual>
+      <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.063 0.12 0.005"/>
+      </geometry>
+    </visual>
+	<collision>
+    <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+      		<geometry>
+        	<box size="0.063 0.12 0.005"/>
+      		</geometry>
+	</collision>
+<inertial>
+  <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+         <mass value="0.06" />
+          <inertia ixx="${0.06*(0.12*0.12+0.005*0.005)/12}" iyy="${0.06*(0.063*0.063+0.005*0.005)/12}" izz="${0.06*(0.063*0.063+0.12*0.12)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+    <link name="right_footpad">
+    <visual>
+      <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.063 0.12 0.005"/>
+      </geometry>
+    </visual>
+  <collision>
+    <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+          <geometry>
+          <box size="0.063 0.12 0.005"/>
+          </geometry>
+  </collision>
+<inertial>
+  <origin xyz="0.0 0.0115 -0.0025" rpy="0 0 0"/>
+         <mass value="0.06" />
+          <inertia ixx="${0.06*(0.12*0.12+0.005*0.005)/12}" iyy="${0.06*(0.063*0.063+0.005*0.005)/12}" izz="${0.06*(0.063*0.063+0.12*0.12)/12}" 
+            ixy="0" iyz="0" ixz="0" />
+       </inertial>
+  </link>
+
+
+<!-- <link name="world"/> 
+
+<joint name="Fixed" type="fixed">
+<parent link="world"/>
+<child link="torso"/>
+<origin xyz="0 0 0 "/>
+</joint> -->
+
+<joint name="torso_l_hip" type="revolute">
+<parent link="torso"/>
+<child link="l_hip"/>
+<axis xyz="0 1 0"/>
+<origin xyz="-0.045 0 -0.02"/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="torso_r_hip" type="revolute">
+<parent link="torso"/>
+<child link="r_hip"/>
+<axis xyz="0 1 0"/>
+<origin xyz="0.045 0 -0.02"/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="l_hip_l_thigh" type="revolute">
+<parent link="l_hip"/>
+<child link="left_thigh"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0.01 0 -0.06 "/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="r_hip_r_thigh" type="revolute">
+<parent link="r_hip"/>
+<child link="right_thigh"/>
+<axis xyz="1 0 0"/>
+<origin xyz="-0.01 0 -0.06 "/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="l_thigh_shank" type="revolute">
+<parent link="left_thigh"/>
+<child link="left_shank"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0 0 -0.08 "/>
+<limit effort="10" lower="-3.14" upper="0" velocity="3"/>
+</joint>
+
+<joint name="r_thigh_shank" type="revolute">
+<parent link="right_thigh"/>
+<child link="right_shank"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0 0 -0.08"/>
+<limit effort="10" lower="-3.14" upper="0" velocity="3"/>
+</joint>
+
+<joint name="l_shank_ankle" type="revolute">
+<parent link="left_shank"/>
+<child link="left_ankle"/>
+<origin xyz="0 0 -0.085 "/>
+<axis xyz="1 0 0"/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="r_shank_ankle" type="revolute">
+<parent link="right_shank"/>
+<child link="right_ankle"/>
+<axis xyz="1 0 0"/>
+<origin xyz="0 0 -0.085 "/> 
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="l_ankle_foot" type="revolute">
+<parent link="left_ankle"/>
+<child link="left_footjoint"/>
+<axis xyz="0 1 0"/>
+<origin xyz="-0.01 0 -0.05 "/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="r_ankle_foot" type="revolute">
+<parent link="right_ankle"/>
+<child link="right_footjoint"/>
+<axis xyz="0 1 0"/>
+<origin xyz="0.01 0 -0.05 "/>
+<limit effort="10" lower="-3.14" upper="3.14" velocity="3"/>
+</joint>
+
+<joint name="l_foot_fixed" type="fixed">
+<parent link="left_footjoint"/>
+<child link="left_footpad"/>
+<origin xyz="0.01 0 -0.01 "/>
+</joint>
+
+<joint name="r_foot_fixed" type="fixed">
+<parent link="right_footjoint"/>
+<child link="right_footpad"/>
+<origin xyz="-0.01 0 -0.01 "/>
+</joint>
+
+<transmission name="torso_l_hip_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$torso_l_hip_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="torso_l_hip">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="torso_r_hip_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$torso_r_hip_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="torso_r_hip">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+
+<transmission name="l_hip_l_thigh_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$l_hip_l_thigh_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="l_hip_l_thigh">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="r_hip_r_thigh_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$r_hip_r_thigh_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="r_hip_r_thigh">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="l_thigh_shank_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$l_thigh_shank_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="l_thigh_shank">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="r_thigh_shank_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$r_thigh_shank_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="r_thigh_shank">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="l_ankle_foot_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$l_ankle_foot_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="l_ankle_foot">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="r_ankle_foot_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$r_ankle_foot_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="r_ankle_foot">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission> 
+
+<transmission name="r_shank_ankle_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$r_shank_ankle_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="r_shank_ankle">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission>
+
+<transmission name="l_shank_ankle_trans">
+<type>transmission_interface/SimpleTransmission</type>
+<actuator name="$l_shank_ankle_motor">
+<mechanicalReduction>1</mechanicalReduction>
+</actuator>
+<joint name="l_shank_ankle">
+<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+</joint>
+</transmission> 
+
+<gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/</robotNamespace>
+  </plugin>
+</gazebo>
+
+<gazebo>
+  <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+    <alwaysOn>false</alwaysOn>
+    <bodyName>torso</bodyName>
+    <topicName>imu</topicName>
+    <serviceName>imu_service</serviceName>
+    <gaussianNoise>0.0</gaussianNoise>
+    <updateRate>50</updateRate>
+  </plugin>
+</gazebo>
+
+<gazebo reference="right_footpad">
+        <kp>1000000.0</kp>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <sensor name="right_foot_contact_sensor" type="contact">
+          <always_on>true</always_on>
+          <update_rate>50.0</update_rate>
+          <contact>
+            <collision>right_foot_collision</collision>
+          </contact>
+          <plugin name="gripper_bumper" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>right_foot_contact_state</bumperTopicName>
+            <frameName>test::right_foot</frameName>
+          </plugin>
+        </sensor>
+      </gazebo>
+
+      <gazebo reference="left_footpad">
+        <kp>1000000.0</kp>
+        <mu1>1</mu1>
+        <mu2>1</mu2>
+        <sensor name="left_foot_contact_sensor" type="contact">
+          <always_on>true</always_on>
+          <update_rate>50.0</update_rate>
+          <contact>
+            <collision>left_foot_collision</collision>
+          </contact>
+          <plugin name="gripper_bumper" filename="libgazebo_ros_bumper.so">
+            <bumperTopicName>left_foot_contact_state</bumperTopicName>
+            <frameName>test::left_foot</frameName>
+          </plugin>
+        </sensor>
+      </gazebo>
+
+</robot>
+

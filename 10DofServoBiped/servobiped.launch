@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="model" default="10DofServoBiped/servobiped.urdf"/>
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+</include>
+<rosparam file="10DofServoBiped/servobiped.yaml" command="load"/>
+<param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -z 0.36 -model 3d_biped" />
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"  args="  torso_l_hip_position_controller torso_r_hip_position_controller l_hip_thigh_position_controller r_hip_thigh_position_controller l_knee_controller r_knee_controller l_ankle_foot_position_controller r_ankle_foot_position_controller l_shank_ankle_position_controller r_shank_ankle_position_controller joint_state_controller  "/>
+
+</launch>
+
+

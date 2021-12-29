@@ -1,0 +1,55 @@
+
+  joint_state_controller:
+    type: "joint_state_controller/JointStateController"
+    publish_rate: 1000 
+
+  torso_l_hip_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: torso_l_hip
+    pid: {p: 10, i: 8, d: 0.01}
+  torso_r_hip_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: torso_r_hip
+    pid: {p: 10, i: 8, d: 0.01}
+
+  l_hip_thigh_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: l_hip_l_thigh
+    pid: {p: 10, i: 8, d: .01}
+
+  r_hip_thigh_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: r_hip_r_thigh
+    pid: {p: 10, i: 8, d: .01}
+
+  l_knee_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: l_thigh_shank
+    pid: {p: 10, i: 8, d: 0.01}
+
+  r_knee_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: r_thigh_shank
+    pid: {p: 10, i: 8, d: 0.01}
+    
+  l_ankle_foot_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: l_ankle_foot
+    pid: {p: 10, i: 8, d: 0.01}
+    
+  r_ankle_foot_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: r_ankle_foot
+    pid: {p: 10, i: 8, d: 0.01}
+
+  l_shank_ankle_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: l_shank_ankle
+    pid: {p: 10, i: 8, d: 0.01}
+    
+  r_shank_ankle_position_controller:
+    type: "velocity_controllers/JointPositionController"
+    joint: r_shank_ankle
+    pid: {p: 10, i: 8, d: 0.01}
+    
+  
